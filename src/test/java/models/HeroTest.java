@@ -5,13 +5,15 @@ import org.junit.Before;
 
 import static org.junit.Assert.*;
 
-public class PostTest {
+public class HeroTest {
 
     @Before
     public void setUp() throws Exception {
+
     }
 
     @After
     public void tearDown() throws Exception {
+
     }
 }
