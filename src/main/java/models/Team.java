@@ -19,7 +19,7 @@ public class Team {
 
     }
 
-    public static ArrayList<Team> getAllTeams() {
+    public static ArrayList<Team> getAllTeams()  {
         return allTeams;
     }
 
