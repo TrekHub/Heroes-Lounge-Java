@@ -1,3 +1,4 @@
+import models.Team;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -34,6 +35,23 @@ public class App {
             return new ModelAndView(model, "teams.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+        post("/new/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.params("name");
+            String maxMembers = request.params("maxMembers");
+            String cause = request.params("cause");
+
+
+
+
+            Team team = new Team(name, maxMembers, cause);
+
+
+            return  new ModelAndView(model, "index.hbs");
+
+
+        }, new HandlebarsTemplateEngine());
 
     }
 }

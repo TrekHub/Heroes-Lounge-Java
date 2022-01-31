@@ -39,18 +39,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/new/" method="post">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Squad Name</label>
-                        <input type="text" class="form-control" id="" placeholder="">
+                        <input   type="text" name="name" class="form-control" id="" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Squad Cause</label>
-                        <input type="text" class="form-control" id="f" placeholder="">
+                        <input type="text" name="cause" class="form-control" id="f" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Max Members</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <input type="number" name="maxMembers" class="form-control" id="formGroupExampleInput2" placeholder="">
                     </div>
 
                     <button type="submit" class="btn" data-bs-dismiss="modal">Submit</button>

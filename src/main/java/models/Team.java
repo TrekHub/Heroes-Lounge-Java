@@ -6,12 +6,12 @@ public class Team {
 
     private String name;
     private String cause;
-    private int maxMembers;
+    private String maxMembers;
 
     private  static ArrayList<Team>  allTeams = new ArrayList<>();
 
 
-    public Team(String name, int maxMembers, String cause) {
+    public Team(String name, String maxMembers, String cause) {
         this.name = name;
         this.maxMembers = maxMembers;
         this.cause = cause;
@@ -31,11 +31,11 @@ public class Team {
         this.name = name;
     }
 
-    public int getMaxMembers() {
+    public String getMaxMembers() {
         return maxMembers;
     }
 
-    public void setMaxMembers(int maxMembers) {
+    public void setMaxMembers(String maxMembers) {
         this.maxMembers = maxMembers;
     }
 
