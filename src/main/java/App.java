@@ -19,6 +19,21 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        //Hero Route
+        get("/heroes", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //Teams Route
+        get("/teams", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            return new ModelAndView(model, "teams.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
     }
 }
