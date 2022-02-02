@@ -18,6 +18,10 @@ public class Hero {
         allHeroes.add(this);
     }
 
+    public static ArrayList<Hero> getAllHeroes() {
+        return allHeroes;
+    }
+
     public String getHeroName() {
         return heroName;
     }
@@ -50,7 +54,5 @@ public class Hero {
         this.imageUrl = imageUrl;
     }
 
-    public ArrayList<Hero> getAllHeroes() {
-        return allHeroes;
-    }
+
 }

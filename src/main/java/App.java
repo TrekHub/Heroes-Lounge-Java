@@ -1,11 +1,12 @@
+import models.Hero;
 import models.Team;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import static spark.Spark.*;
 
+import static spark.Spark.*;
 
 
 public class App {
@@ -23,6 +24,8 @@ public class App {
         //Root Route
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            ArrayList<Hero>  allHeroes = Hero.getAllHeroes();
+            model.put("allHeroes", allHeroes);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -30,15 +33,13 @@ public class App {
         //Hero Route
         get("/heroes", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            ArrayList<Hero>  allHeroes = Hero.getAllHeroes();
+            model.put("allHeroes", allHeroes);
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
 
-        //Form route
-        get("/form", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "form.hbs");
-        }, new HandlebarsTemplateEngine());
+
 
         get("/teams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -48,21 +49,27 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-
         post("/getTeams/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String cause = request.queryParams("cause");
             String maxMembers = request.queryParams("maxMembers");
             Team resume = new Team(name, cause, maxMembers);
-            return new ModelAndView(model, "heroes.hbs");
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
 
+        post("/new/hero", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String heroName = request.queryParams("heroName");
+            String power = request.queryParams("power");
+            String weakness = request.queryParams("weakness");
+            String imageUrl = request.queryParams("imageUrl");
+            Hero hero = new Hero(heroName, power, weakness, imageUrl);
 
+            return new ModelAndView(model, "success.hbs");
 
-
-
+        }, new HandlebarsTemplateEngine());
 
 
     }

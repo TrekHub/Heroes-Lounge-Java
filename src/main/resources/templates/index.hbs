@@ -8,8 +8,73 @@
     {{> navBar.hbs}}
     <!--    Banner Section-->
     <div class="banner jumbotron h-50"></div>
-    <div class="header"></div>
+
     <!-- Super Hero Section   -->
+
+
+
+
+
+    <div class="modal fade" id="heroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Team</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/new/hero" method="post">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Hero Name</label>
+                            <input type="text" name="heroName" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Power</label>
+                            <input type="text" name="power" class="form-control" id="f" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Weakness</label>
+                            <input type="text" name="weakness" class="form-control" id="formGroupExampleInput2"
+                                   placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Image Url</label>
+                            <input type="text" name="imageUrl" class="form-control" id="formGroupExampleInput2"
+                                   placeholder="">
+                        </div>
+
+                        <button type="submit" class="btn" data-bs-dismiss="modal">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="heroes">
+
+        <button class="btn  m-5 " type="button" data-bs-toggle="modal" data-bs-target="#heroModal">Create Hero</button>
+
+
+    <div class="row">
+
+    {{#if allHeroes }}
+        {{#each allHeroes }}
+                <div class="col-md-4 col-xl-3">
+                    <div class="card bg-c-green order-card">
+                        <div class="card-block">
+                            <p class="m-b-0">Power: <span class="f-right">{{ power }}</span></p>
+                            <h2 class="text-right"> {{ heroName }}</h2>
+                            <p class="m-b-0">Weakness: <span class="f-right">{{ weakness }}</span></p>
+                        </div>
+                    </div>
+                </div>
+        {{/each}}
+    {{else}}
+            <p>No Squad Created</p>
+
+    {{/if}}
 
 
 
@@ -22,7 +87,7 @@
 
 
 
-<style>
+    <style>
     .banner {
     width: 90%;
     margin: 10px auto;
@@ -31,6 +96,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     }
+    .heroes {
+    width: 90%;
+    margin: auto;
+    };
     .header {
       height: 300px;
       }
@@ -47,69 +116,54 @@
      width: 90%;
      margin: auto;
     }
-    .profile-card-2 {
-    max-width: 300px;
-    background-color: #FFF;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-    background-position: center;
-    overflow: hidden;
-    position: relative;
-    margin: 10px auto;
-    cursor: pointer;
-    border-radius: 10px;
+ .order-card {
+    color: #fff;
 }
 
-.profile-card-2 img {
-    transition: all linear 0.25s;
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
 }
 
-.profile-card-2 .profile-name {
-    position: absolute;
-    left: 30px;
-    bottom: 70px;
-    font-size: 30px;
-    color: #06050a;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    transition: all linear 0.25s;
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6, #06050a);
 }
 
-.profile-card-2 .profile-icons {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    color: #06050a;
-    transition: all linear 0.25s;
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
 }
 
-.profile-card-2 .profile-username {
-    position: absolute;
-    bottom: 50px;
-    left: 30px;
-    color: #06050a;
-    font-size: 13px;
-    transition: all linear 0.25s;
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
 }
 
-.profile-card-2 .profile-icons .fa {
-    margin: 5px;
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.profile-card-2:hover img {
-    filter: grayscale(100%);
+.card .card-block {
+    padding: 25px;
 }
 
-.profile-card-2:hover .profile-name {
-    bottom: 80px;
+.order-card i {
+    font-size: 26px;
 }
 
-.profile-card-2:hover .profile-username {
-    bottom: 60px;
+.f-left {
+    float: left;
 }
 
-.profile-card-2:hover .profile-icons {
-    right: 40px;
+.f-right {
+    float: right;
 }
-</style>
+
+
+    </style>
 
 {{> layout.hbs }}
