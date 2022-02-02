@@ -3,7 +3,22 @@
 {{/partial}}
 
 {{#partial "content"}}
-    {{> navBar.hbs}}
+    {{> navBar.hbs }}
+
+    {{#if allHeroes }}
+        {{#each allHeroes }}
+            <P> test {{ heroName }}</P>
+            <P> test {{ power }}</P>
+            <P>test {{ weakness }}</P>
+            <P>test {{ imageUrl }}</P>
+
+
+        {{/each}}
+    {{else}}
+        <p>No Teams Created</p>
+    {{/if}}
+
+
 {{/partial}}
 
 

@@ -5,6 +5,8 @@
 {{#partial "content"}}
     {{> navBar.hbs }}
 
+    <div class="banner jumbotron h-50"></div>
+
     {{#if allHeroes }}
         {{#each allHeroes }}
             <P> test {{ heroName }}</P>
@@ -15,9 +17,23 @@
 
         {{/each}}
     {{else}}
-        <p>No Teams Created</p>
+        <div class="alert alert-danger" role="alert">
+            Error Creating The Squad Object. Go to the <a href="/" class="alert-link">HomePage</a>.
+        </div>
     {{/if}}
 
+
+    <style>
+
+  .banner {
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 24px;
+    background-image: url(https://wallpaperaccess.com/full/1158056.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    </style>
 
 {{/partial}}
 
