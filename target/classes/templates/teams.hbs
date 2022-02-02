@@ -1,0 +1,24 @@
+{{#partial  "title"}}
+    Teams
+{{/partial}}
+
+{{#partial "content"}}
+    {{> navBar.hbs}}
+
+
+    {{#if allTeams}}
+
+        {{#each allTeams}}
+            <P>{{ name }}</P>
+            <P>{{ cause }}</P>
+            <P>{{ maxMembers }}</P>
+
+
+        {{/each}}
+        {{else}}
+        <p>No Teams Created</p>
+    {{/if}}
+{{/partial}}
+
+
+{{> layout.hbs}}
