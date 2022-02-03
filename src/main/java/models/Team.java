@@ -1,12 +1,12 @@
 package models;
 import java.util.ArrayList;
 
+
 public class Team {
 
     private String name;
     private String cause;
     private String maxMembers;
-
     private  static ArrayList<Team>  allTeams = new ArrayList<>();
 
 
@@ -18,17 +18,21 @@ public class Team {
 
     }
 
+
     public static ArrayList<Team> getAllTeams()  {
         return allTeams;
     }
+
 
     public String getName() {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getMaxMembers() {
         return maxMembers;
@@ -38,11 +42,15 @@ public class Team {
         this.maxMembers = maxMembers;
     }
 
+
     public String getCause() {
         return cause;
     }
 
+
     public void setCause(String cause) {
         this.cause = cause;
     }
+
+
 }

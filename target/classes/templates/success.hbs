@@ -4,8 +4,10 @@
 
 
 {{#partial "content"}}
-    <h3>Success Creating the Object</h3>
-    <a href="/">Go to HomePage</a>
+    {{> navBar.hbs}}
+    <div class="alert alert-success" role="alert">
+        You Succesfully Created an Object. Go To the  <a href="/" class="alert-link">HomePage</a>.
+    </div>
 {{/partial}}
 
 {{> layout.hbs }}

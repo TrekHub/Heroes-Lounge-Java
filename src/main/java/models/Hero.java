@@ -1,11 +1,18 @@
 package models;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hero {
     private String heroName;
     private String power;
     private String weakness;
+    private  int id;
+    private List<Team> teamHeroes;
+
+    public static ArrayList<Hero> getAllHeroes() {
+        return allHeroes;
+    }
+
     private String imageUrl;
     private static ArrayList<Hero> allHeroes = new ArrayList<>();
 
@@ -16,10 +23,12 @@ public class Hero {
         this.weakness = weakness;
         this.imageUrl = imageUrl;
         allHeroes.add(this);
+        this.id = allHeroes.size();
+        this.teamHeroes = new ArrayList<Team>();
     }
 
-    public static ArrayList<Hero> getAllHeroes() {
-        return allHeroes;
+    public int getId() {
+        return id;
     }
 
     public String getHeroName() {
@@ -52,6 +61,22 @@ public class Hero {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public static Hero findHero(int id) {
+        return  allHeroes.get(id - 1);
+    }
+
+
+    //function to add heroes to squad
+    public  void addHeroToSquad(Team newTeam){
+        teamHeroes.add(newTeam);
+
+    };
+
+
+    public List<Team> getTeamHeroes() {
+        return teamHeroes;
     }
 
 

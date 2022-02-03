@@ -6,11 +6,8 @@
 
 
 {{#partial "content"}}
-
-
     {{> navBar.hbs}}
     <div class="banner jumbotron h-50">
-
     </div>
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -28,8 +25,9 @@
                                 <p class="m-b-0">Cause: <span class="f-right">{{ maxMembers }}</span></p>
                                 <h2 class="text-right"><span>{{ name }}</span></h2>
                                 <p class="m-b-0">Max Members: <span class="f-right">{{ cause }}</span></p>
-
                             </div>
+                            <a href="/new/{{id}}">See Heroes</a>
+
                         </div>
                     </div>
                 {{/each}}

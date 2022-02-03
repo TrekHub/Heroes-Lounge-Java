@@ -4,6 +4,7 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -34,7 +35,9 @@ public class App {
         get("/heroes", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Hero>  allHeroes = Hero.getAllHeroes();
+            ArrayList<Team> allTeams = Team.getAllTeams();
             model.put("allHeroes", allHeroes);
+            model.put("allTeams", allTeams);
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -44,7 +47,9 @@ public class App {
         get("/teams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Team> allTeams = Team.getAllTeams();
+            ArrayList<Hero>  allHeroes = Hero.getAllHeroes();
             model.put("allTeams", allTeams);
+            model.put("allHeroes", allHeroes);
             return new ModelAndView(model, "teams.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -54,7 +59,13 @@ public class App {
             String name = request.queryParams("name");
             String cause = request.queryParams("cause");
             String maxMembers = request.queryParams("maxMembers");
+            int squadHero = Integer.parseInt(request.queryParams("squadHero"));
+            Hero newHero = Hero.findHero(squadHero);
             Team resume = new Team(name, cause, maxMembers);
+
+            newHero.addHeroToSquad(resume);
+
+
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -69,6 +80,17 @@ public class App {
 
             return new ModelAndView(model, "success.hbs");
 
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/new/:id", (request,response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Hero thisHero = Hero.findHero(Integer.parseInt(request.params("id")));
+            List<Team> thisTeam = thisHero.getTeamHeroes();
+            model.put("thisHero", thisHero);
+            model.put("thisTeam", thisTeam);
+
+            return  new ModelAndView(model, "teamMembers.hbs");
         }, new HandlebarsTemplateEngine());
 
 

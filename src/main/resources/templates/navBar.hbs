@@ -53,6 +53,23 @@
                         <input type="number" name="maxMembers" class="form-control" id="formGroupExampleInput2" placeholder="">
                     </div>
 
+                    <select class="form-select" name="squadHero" aria-label="Default select example">
+                        {{#if allHeroes}}
+                            <option selected>Select Super Hero</option>
+                        {{#each allHeroes}}
+                            <option value="{{ id }}">{{ heroName }} {{ id }}</option>
+
+                        {{/each}}
+                        {{else}}
+                            <option selected>No Super Hero Created</option>
+
+
+                        {{/if}}
+
+
+
+                    </select>
+
                     <button type="submit" class="btn" data-bs-dismiss="modal">Submit</button>
                 </form>
             </div>
